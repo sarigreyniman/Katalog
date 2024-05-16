@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "9Ej+BzRnRB059w6PtXLEg1Wc9T1InDq092FEO66BvTTQQIhcL/mi0GukgFW0tldKgLTgHwuVUI0lRYiNl5Dvdg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\User\\Desktop\\Solid.Net-master\\Solid.Core\\Solid.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
