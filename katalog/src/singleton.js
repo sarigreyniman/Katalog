@@ -36,10 +36,10 @@ class Singleton {
         try {
             const response = await axios.post(apiUrl, formData);
             if (response.status === 200) {
-                // runInAction(() => {
+                 runInAction(() => {
                     this.List.push(response.data);
                     console.log("User added successfully.");
-                // });
+                 });
             } else {
                 console.error("Unexpected status:", response.status);
             }
