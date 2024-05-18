@@ -37,7 +37,7 @@ class Singleton {
             const response = await axios.post(apiUrl, formData);
             if (response.status === 200) {
                  runInAction(() => {
-                    // this.List.push(response.data);
+                    this.List.push(response.data);
                     console.log("User added successfully.");
                  });
             } else {
