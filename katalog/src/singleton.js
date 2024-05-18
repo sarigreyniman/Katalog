@@ -8,8 +8,6 @@ class Singleton {
     List = [];
 
    
-
-
     constructor() {
         makeAutoObservable(this, {
             List: observable,
