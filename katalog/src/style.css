@@ -8,6 +8,10 @@
 
 }
 
+.bb:hover{
+    background-color: #ff8572;
+}
+
 .prices {
     display: flex;
     flex-direction: row;

@@ -101,7 +101,7 @@ const Katalog = () => {
                     in 4-6 weeks.
                 </p>
             </div>
-            <button style={{ backgroundColor: '#DC8175',borderRadius:'10vh',height:'5vh', cursor: 'pointer' }} onClick={handleButtonClick} sx={{
+            <button className='bb' style={{ backgroundColor: '#DC8175',borderRadius:'10vh',height:'5vh', cursor: 'pointer' }} onClick={handleButtonClick} sx={{
                 }}>
                     I want to donate
                 </button>
