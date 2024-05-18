@@ -1,7 +1,7 @@
 import { observable, action, makeAutoObservable, runInAction } from 'mobx';
 import axios from "axios";
 
-const apiUrl = process.env.REACT_APP_MY_VAR;
+const apiUrl = process.env.REACT_APP_Swagger;
 
 class Singleton {
 
@@ -53,6 +53,34 @@ class Singleton {
                 console.error("Error adding user:", error.message);
             }
         }
+        // try {
+        //     const formDataToSend = new FormData();
+        //     for (const key in formData) {
+        //         formDataToSend.append(key, formData[key]);
+        //     }
+
+        //     const response = await axios.post(apiUrl, formDataToSend, {
+        //         headers: {
+        //             'Content-Type': 'multipart/form-data'
+        //         }
+        //     });
+
+        //     if (response.status === 200) {
+        //         runInAction(() => {
+        //             this.List.push(response.data);
+        //             console.log("User added successfully.");
+        //         });
+        //     } else {
+        //         console.error("Unexpected status:", response.status);
+        //     }
+        // } catch (error) {
+        //     if (error.response) {
+        //         console.error("Server responded with a status:", error.response.status);
+        //         console.error("Response data:", error.response.data);
+        //     } else {
+        //         console.error("Error adding user:", error.message);
+        //     }
+        // }
     }  
   
 }
