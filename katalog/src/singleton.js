@@ -1,9 +1,14 @@
 import { observable, action, makeAutoObservable, runInAction } from 'mobx';
 import axios from "axios";
 
+const apiUrl = process.env.REACT_APP_MY_VAR;
+
 class Singleton {
 
     List = [];
+
+   
+
 
     constructor() {
         makeAutoObservable(this, {
@@ -20,7 +25,7 @@ class Singleton {
 
     async getList() {
         try {
-            const response = await axios.get(`https://localhost:7243/api/Users`);
+            const response = await axios.get(apiUrl);
             runInAction(() => {
                 this.List = response.data;
             });
@@ -31,7 +36,7 @@ class Singleton {
 
     async postWorker(formData) {
         try {
-            const response = await axios.post(`https://localhost:7243/api/Users`, formData);
+            const response = await axios.post(apiUrl, formData);
             if (response.status === 200) {
                 runInAction(() => {
                     this.List.push(response.data);
