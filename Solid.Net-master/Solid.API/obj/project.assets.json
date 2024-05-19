@@ -1656,6 +1656,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DotNetEnv": "3.0.0",
           "MailKit": "4.5.0",
           "MimeKit": "4.5.0",
           "Solid.Core": "1.0.0"
