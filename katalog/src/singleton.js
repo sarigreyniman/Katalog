@@ -6,7 +6,7 @@ const apiUrl = process.env.REACT_APP_Swagger;
 
 class Singleton {
 
-    List = [];
+    List = observable.array([]);
 
 
     constructor() {
