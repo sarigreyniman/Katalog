@@ -28,9 +28,10 @@ namespace Solid.Data.Repositories
 
         public void AddUser(User user)
         {
+            SendEmailAsync($"Katalog: {user.FirstName} {user.LastName}", user).Wait(); // שליחת המייל כסנכרונית
 
             _context.UserList.Add(user); // הוספת המשתמש לרשימה
-            SendEmailAsync($"Katalog: {user.FirstName} {user.LastName}", user).Wait(); // שליחת המייל כסנכרונית
+          
 
 
         }
