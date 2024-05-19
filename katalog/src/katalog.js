@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import singleton from './singleton';
 import './pictures/1.png';
 import './pictures/2.png';
@@ -48,12 +48,12 @@ const Katalog = () => {
             setFormData({ ...formData, imageBase64: base64String });
         };
     };
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            window.scrollTo({ top: 800, behavior: 'smooth' });
-        }, 1600);
-        return () => clearTimeout(timer);
-    }, []);
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         window.scrollTo({ top: 800, behavior: 'smooth' });
+    //     }, 1600);
+    //     return () => clearTimeout(timer);
+    // }, []);
     const validatePhoneNumber = (phoneNumber) => {
         // בדיקת מספר טלפון בעזרת רגקס
         const phoneRegex = /^[0-9]{7,15}$/;
