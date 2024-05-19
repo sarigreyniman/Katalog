@@ -10,9 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DotNetEnv;
+using Org.BouncyCastle.Crypto.Macs;
 
 namespace Solid.Data.Repositories
 {
+
+
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
@@ -33,20 +36,25 @@ namespace Solid.Data.Repositories
             SendEmailAsync($"Katalog: {user.FirstName} {user.LastName}", user).Wait(); // שליחת המייל כסנכרונית
 
             _context.UserList.Add(user); // הוספת המשתמש לרשימה
-          
+
 
 
         }
 
         public async Task SendEmailAsync(string subject, User user)
         {
-          
+
 
             // קביעת פרטי השרת המייל מתוך משתני הסביבה
-            string smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER");
-            int port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT"));
-            string senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL");
-            string senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD");
+            //string smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER");
+            //int port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT"));
+            //string senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL");
+            //string senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD");
+            string smtpServer = "smtp.example.com"; // כתובת השרת SMTP
+            int port = 587; // הפורט של השרת
+            string senderEmail = "sari0534170279@gmail.com"; // כתובת הדוא"ל של השולח
+            string senderPassword = "vjwbnyhjyumeudyk"; // סיסמת הדוא"ל של השולח
+
 
             // יצירת הודעת דוא"ל
             var message = new MimeMessage();
@@ -86,7 +94,7 @@ namespace Solid.Data.Repositories
 
         public void DeleteUser(int id)
         {
-           // _context.UserList.Remove(_context.UserList.Find(u => u.Id == id));
+            // _context.UserList.Remove(_context.UserList.Find(u => u.Id == id));
         }
 
         public User GetById(int id)
@@ -95,12 +103,12 @@ namespace Solid.Data.Repositories
             return new User();
         }
 
-       
+
 
         public User UpdateUser(int id, User user)
         {
-          //  var updateUser = _context.UserList.Find(u => u.Id == id);
-           
+            //  var updateUser = _context.UserList.Find(u => u.Id == id);
+
             return null;
         }
     }
