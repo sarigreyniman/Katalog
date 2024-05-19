@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import singleton from './singleton';
 import './pictures/1.png';
 import './pictures/2.png';
@@ -48,9 +48,28 @@ const Katalog = () => {
             setFormData({ ...formData, imageBase64: base64String });
         };
     };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            window.scrollTo({ top: 800, behavior: 'smooth' });
+        }, 1600);
+        return () => clearTimeout(timer);
+    }, []);
+    const validatePhoneNumber = (phoneNumber) => {
+        // בדיקת מספר טלפון בעזרת רגקס
+        const phoneRegex = /^[0-9]{7,15}$/;
+        return phoneRegex.test(phoneNumber);
+    };
 
+ 
     const submitForm = async (e) => {
         e.preventDefault();
+        const isValidPhoneNumber = validatePhoneNumber(formData.phone);
+        const isValidPostalCodeNumber = validatePhoneNumber(formData.phone);
+        if (!isValidPhoneNumber||!isValidPostalCodeNumber) {
+            setErrorMessage('Please enter a valid phone number.');
+            return;
+        }
+
         console.log(formData)
         try {
             await singleton.postWorker(formData);
@@ -111,14 +130,14 @@ const Katalog = () => {
                     {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
                     {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
                     <form onSubmit={submitForm}>
-                        <input placeholder='First Name' type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
-                        <input placeholder='Last Name' type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
-                        <input placeholder='Phone' type="text" name="phone" value={formData.phone} onChange={handleChange} />
-                        <input placeholder='Address' type="text" name="address" value={formData.address} onChange={handleChange} />
-                        <input placeholder='Postal Code' type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} />
-                        <input placeholder='City' type="text" name="city" value={formData.city} onChange={handleChange} />
-                        <input placeholder='Country' type="text" name="country" value={formData.country} onChange={handleChange} />
-                        <textarea placeholder='Jewelry Numbers and Quantity' type="text" name="JewelryNumbersAndQuantityOfEachPrize" value={formData.JewelryNumbersAndQuantityOfEachPrize} onChange={handleChange} />
+                        <input placeholder='First Name' type="text" name="firstName" value={formData.firstName} onChange={handleChange} required/>
+                        <input placeholder='Last Name' type="text" name="lastName" value={formData.lastName} onChange={handleChange} required/>
+                        <input placeholder='Phone' type="text" name="phone" value={formData.phone} onChange={handleChange} required/>
+                        <input placeholder='Address' type="text" name="address" value={formData.address} onChange={handleChange} required/>
+                        <input placeholder='Postal Code' type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} required/>
+                        <input placeholder='City' type="text" name="city" value={formData.city} onChange={handleChange} required/>
+                        <input placeholder='Country' type="text" name="country" value={formData.country} onChange={handleChange} required/>
+                        <textarea placeholder='Jewelry Numbers and Quantity' type="text" name="JewelryNumbersAndQuantityOfEachPrize" value={formData.JewelryNumbersAndQuantityOfEachPrize} onChange={handleChange} required/>
                         {/* <input type="file" accept="image/*" name="imageBase64" onChange={handleFileChange} /> */}
                         Upload Receipt
                             <input type="file" accept="image/*" name="imageBase64" onChange={handleFileChange} />
