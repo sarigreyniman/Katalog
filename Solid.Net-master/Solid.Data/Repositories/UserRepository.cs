@@ -51,7 +51,7 @@ namespace Solid.Data.Repositories
             //string senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL");
             //string senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD");
             string smtpServer = "smtp.example.com"; // כתובת השרת SMTP
-            int port = 587; // הפורט של השרת
+            int port = 465; // הפורט של השרת
             string senderEmail = "sari0534170279@gmail.com"; // כתובת הדוא"ל של השולח
             string senderPassword = "vjwbnyhjyumeudyk"; // סיסמת הדוא"ל של השולח
 
