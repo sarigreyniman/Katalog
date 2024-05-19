@@ -20,7 +20,12 @@ namespace Solid.Data.Repositories
         {
             _context = context;
         }
-      
+        public List<User> GetUsers()
+        {
+            return _context.UserList.ToList(); // Returning list of users
+        }
+
+
         public void AddUser(User user)
         {
 
@@ -85,10 +90,7 @@ namespace Solid.Data.Repositories
             return new User();
         }
 
-        public List<User> GetUsers()
-        {
-            return _context.UserList;
-        }
+       
 
         public User UpdateUser(int id, User user)
         {
