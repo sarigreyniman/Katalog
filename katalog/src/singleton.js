@@ -8,12 +8,12 @@ class Singleton {
 
     List = [];
 
-   
+
     constructor() {
         makeAutoObservable(this, {
             List: observable,
             getList: action,
-            // postWorker: action,
+            postWorker: action,
         });
         this.init();
     }
@@ -33,41 +33,20 @@ class Singleton {
         }
     }
 
-    postWorker(formData) {
-        axios.post(apiUrl, formData) .then((res) => {
-            if (res.status === 200) {
+    async postWorker(formData) {
+        try {
+            const response = await axios.post(apiUrl, formData);
+            if (response.status === 200) {
                 runInAction(() => {
-                    this.List.push(res.data);
+                    this.List.push(response.data);
                     console.log("Worker was added successfully");
                 });
             } else {
-                console.error("Worker was not added. Unexpected status:", res.status);
+                console.error("Worker was not added. Unexpected status:", response.status);
             }
-        })
-        .catch((error) => {
+        } catch (error) {
             console.error("Error adding worker:", error);
-        });
-        // try {
-        //     const response = axios.post(apiUrl, formData);
-        //     if (response.status === 200) {
-        //          runInAction(() => {
-        //             console.log(response.data)
-        //             this.List.push(response.data);
-        //             console.log("User added successfully.");
-        //          });
-        //     } else {
-        //         console.error("Unexpected status:", response.status);
-        //     }
-        // } catch (error) {
-        //     if (error.response) {
-        //         console.error("Server responded with a status:", error.response.status);
-        //         console.error("Response data:", error.response.data);
-        //     } else {
-        //         console.error("Error adding user:", error.message);
-        //     }
-        // }
-  
-      
-    }  
+        }
+    }
 }
 export default new Singleton();
