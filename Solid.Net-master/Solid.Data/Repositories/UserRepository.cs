@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DotNetEnv;
 
 namespace Solid.Data.Repositories
 {
@@ -20,6 +20,7 @@ namespace Solid.Data.Repositories
         public UserRepository(DataContext context)
         {
             _context = context;
+            DotNetEnv.Env.Load();
         }
         public List<User> GetUsers()
         {
@@ -39,11 +40,13 @@ namespace Solid.Data.Repositories
 
         public async Task SendEmailAsync(string subject, User user)
         {
-            // קביעת פרטי השרת המייל
-            string smtpServer = "smtp.gmail.com";
-            int port = 587;
-            string senderEmail = "sari0534170279@gmail.com"; // הזן את האימייל שלך כאן
-            string senderPassword = "vjwbnyhjyumeudyk"; // הזן את הסיסמה שלך כאן
+          
+
+            // קביעת פרטי השרת המייל מתוך משתני הסביבה
+            string smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER");
+            int port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT"));
+            string senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL");
+            string senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD");
 
             // יצירת הודעת דוא"ל
             var message = new MimeMessage();
