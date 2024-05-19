@@ -22,3 +22,15 @@ C:\Users\User\Desktop\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.dl
 C:\Users\User\Desktop\Solid.Net-master\Solid.Core\obj\Debug\net6.0\refint\Solid.Core.dll
 C:\Users\User\Desktop\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.pdb
 C:\Users\User\Desktop\Solid.Net-master\Solid.Core\obj\Debug\net6.0\ref\Solid.Core.dll
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\bin\Debug\net6.0\Solid.Core.deps.json
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\bin\Debug\net6.0\Solid.Core.dll
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\bin\Debug\net6.0\Solid.Core.pdb
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.AssemblyInfo.cs
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.dll
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\refint\Solid.Core.dll
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\Solid.Core.pdb
+C:\Users\User\Desktop\katalog\Solid.Net-master\Solid.Core\obj\Debug\net6.0\ref\Solid.Core.dll

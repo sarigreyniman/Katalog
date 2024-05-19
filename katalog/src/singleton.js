@@ -1,5 +1,6 @@
 import { observable, action, makeAutoObservable, runInAction } from 'mobx';
 import axios from "axios";
+// import { log } from 'util';
 
 const apiUrl = process.env.REACT_APP_Swagger;
 
@@ -12,7 +13,7 @@ class Singleton {
         makeAutoObservable(this, {
             List: observable,
             getList: action,
-            postWorker: action,
+            // postWorker: action,
         });
         this.init();
     }
@@ -32,42 +33,28 @@ class Singleton {
         }
     }
 
-    async postWorker(formData) {
-        try {
-            const response = await axios.post(apiUrl, formData);
-            if (response.status === 200) {
-                 runInAction(() => {
-                    this.List.push(response.data);
-                    console.log("User added successfully.");
-                 });
+    postWorker(formData) {
+        axios.post(apiUrl, formData) .then((res) => {
+            if (res.status === 200) {
+                runInAction(() => {
+                    this.List.push(res.data);
+                    console.log("Worker was added successfully");
+                });
             } else {
-                console.error("Unexpected status:", response.status);
+                console.error("Worker was not added. Unexpected status:", res.status);
             }
-        } catch (error) {
-            if (error.response) {
-                console.error("Server responded with a status:", error.response.status);
-                console.error("Response data:", error.response.data);
-            } else {
-                console.error("Error adding user:", error.message);
-            }
-        }
+        })
+        .catch((error) => {
+            console.error("Error adding worker:", error);
+        });
         // try {
-        //     const formDataToSend = new FormData();
-        //     for (const key in formData) {
-        //         formDataToSend.append(key, formData[key]);
-        //     }
-
-        //     const response = await axios.post(apiUrl, formDataToSend, {
-        //         headers: {
-        //             'Content-Type': 'multipart/form-data'
-        //         }
-        //     });
-
+        //     const response = axios.post(apiUrl, formData);
         //     if (response.status === 200) {
-        //         runInAction(() => {
+        //          runInAction(() => {
+        //             console.log(response.data)
         //             this.List.push(response.data);
         //             console.log("User added successfully.");
-        //         });
+        //          });
         //     } else {
         //         console.error("Unexpected status:", response.status);
         //     }
@@ -79,8 +66,8 @@ class Singleton {
         //         console.error("Error adding user:", error.message);
         //     }
         // }
-    }  
   
+      
+    }  
 }
-const singletonInstance = new Singleton();
-export default singletonInstance;
+export default new Singleton();
