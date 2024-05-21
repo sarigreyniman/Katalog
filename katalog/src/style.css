@@ -40,14 +40,19 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin-left: 3vw;
-    border: 0.5px solid black;
+    margin-left: 4vw;
+    /* border: 0.5px solid black; */
     padding: 2vh;
-    border-radius: 2vh;
-    margin-right: 77vw;
+    border-radius: 10vh;
+    /* margin-right: 77vw; */
+    background-color: #DC8175;
+    cursor: pointer;
+}
+.form:hover{
+    background-color: #ff8572;
 }
 
-form input {
+/* form input {
     padding: 1.5vh;
     width: 15vw;
     margin-bottom: 1vh;
@@ -59,7 +64,7 @@ form textarea {
     height: 6vh;
     margin-bottom: 1vh;
     border-radius: 2vh;
-}
+} */
 
 .buttton {
     background-color: #DC8175;

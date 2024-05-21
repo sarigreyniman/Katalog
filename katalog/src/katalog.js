@@ -1,5 +1,5 @@
-import React, {  useEffect, useState } from 'react';
-import singleton from './singleton';
+import React from 'react';
+// import singleton from './singleton';
 import './pictures/1.png';
 import './pictures/2.png';
 import './pictures/3.png';
@@ -15,83 +15,112 @@ import './pictures/12.png';
 import './style.css';
 
 const Katalog = () => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        phone: '',
-        address: '',
-        postalCode: '',
-        city: '',
-        country: '',
-        JewelryNumbersAndQuantityOfEachPrize: '',
-        imageBase64: null,
-    });
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
+    // const [formData, setFormData] = useState({
+    //     firstName: '',
+    //     lastName: '',
+    //     phone: '',
+    //     address: '',
+    //     postalCode: '',
+    //     city: '',
+    //     country: '',
+    //     JewelryNumbersAndQuantityOfEachPrize: '',
+    //     imageBase64: null,
+    // });
+    // const [errorMessage, setErrorMessage] = useState('');
+    // const [successMessage, setSuccessMessage] = useState('');
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFormData({ ...formData, [name]: value });
+    // };
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     const handleButtonClick = () => {
         window.open('https://www.kupat.org/views/DonationPage?pid=1297&recid=0', '_blank');
     };
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
-            setFormData({ ...formData, imageBase64: base64String });
-        };
-    };
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            window.scrollTo({ top: 800, behavior: 'smooth' });
-        }, 1600);
-        return () => clearTimeout(timer);
-    }, []);
-    const validatePhoneNumber = (phoneNumber) => {
-        // בדיקת מספר טלפון בעזרת רגקס
-        const phoneRegex = /^[0-9]{7,15}$/;
-        return phoneRegex.test(phoneNumber);
-    };
+    // const handleFileChange = (e) => {
+    //     const file = e.target.files[0];
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(file);
+    //     reader.onloadend = () => {
+    //         const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+    //         setFormData({ ...formData, imageBase64: base64String });
+    //     };
+    // };
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         window.scrollTo({ top: 800, behavior: 'smooth' });
+    //     }, 1600);
+    //     return () => clearTimeout(timer);
+    // }, []);
+    // const validatePhoneNumber = (phoneNumber) => {
+    //     // בדיקת מספר טלפון בעזרת רגקס
+    //     const phoneRegex = /^[0-9]{7,15}$/;
+    //     return phoneRegex.test(phoneNumber);
+    // };
 
- 
-    const submitForm = async (e) => {
-        e.preventDefault();
-        const isValidPhoneNumber = validatePhoneNumber(formData.phone);
-        const isValidPostalCodeNumber = validatePhoneNumber(formData.phone);
-        if (!isValidPhoneNumber||!isValidPostalCodeNumber) {
-            setErrorMessage('Please enter a valid phone number.');
-            return;
-        }
+  // try {
+        //     await singleton.postWorker(formData);
+        //     setSuccessMessage('User added successfully.');
+        //     setFormData({
+        //         id: '',
+        //         firstName: '',
+        //         lastName: '',
+        //         phone: '',
+        //         address: '',
+        //         postalCode: '',
+        //         city: '',
+        //         country: '',
+        //         JewelryNumbersAndQuantityOfEachPrize: '',
+        //         imageBase64: null,
+        //     });
+        //     setErrorMessage('');
+        // } catch (error) {
+        //     console.error('Error adding user:', error);
+        //     setErrorMessage('Failed to add user.');
+        // }
 
-        console.log(formData)
-        try {
-            await singleton.postWorker(formData);
-            setSuccessMessage('User added successfully.');
-            setFormData({
-                id: '',
-                firstName: '',
-                lastName: '',
-                phone: '',
-                address: '',
-                postalCode: '',
-                city: '',
-                country: '',
-                JewelryNumbersAndQuantityOfEachPrize: '',
-                imageBase64: null,
-            });
-            setErrorMessage('');
-        } catch (error) {
-            console.error('Error adding user:', error);
-            setErrorMessage('Failed to add user.');
+        const handleButtonClickCollect=()=>{
+            const emailBody = `
+            First Name: \n
+            Last Name:\n
+            Phone: \n
+            Address: \n
+            Postal Code:\n
+            City:\n
+            Country:\n
+            Jewelry Numbers and Quantity: \n
+            Recipt on your donating:
+        `;
+        window.open( `https://mail.google.com/mail/?view=cm&fs=1&to=sarigreyniman@gmail.com&su=Katalog&body=${emailBody}`, '_blank');
         }
-    };
+    // const submitForm = async (e) => {
+    //     e.preventDefault();
+    //     const isValidPhoneNumber = validatePhoneNumber(formData.phone);
+    //     const isValidPostalCodeNumber = validatePhoneNumber(formData.phone);
+    //     if (!isValidPhoneNumber || !isValidPostalCodeNumber) {
+    //         setErrorMessage('Please enter a valid phone number.');
+    //         return;
+    //     }
+
+    //     console.log(formData)
+      
+    //     const emailBody = `
+    //     F Name: ${formData.firstName}\n
+    //     LName: ${formData.lastName}\n
+    //     Phone: ${formData.phone}\n
+    //     Address: ${formData.address}\n
+    //     Postal Code: ${formData.postalCode}\n
+    //     City: ${formData.city}\n
+    //     Country: ${formData.country}\n
+    //     Jewelry Numbers and Quantity: ${formData.JewelryNumbersAndQuantityOfEachPrize}\n
+    //     Image: ${formData.imageBase64 ? formData.imageBase64 : 'No Image'}
+    // `;
+    //     // window.open( `https://mail.google.com/mail/?view=cm&fs=1&to=sarigreyniman@gmail.com&su=Katalog&body=${emailBody}`, '_blank');
+    //     const mailtoLink = `mailto:sarigreyniman@gmail.com?subject=Katalog&body=${encodeURIComponent(emailBody)}`;
+    //     window.open(mailtoLink, '_blank');
+    // };
 
     return (
         <div className='div'>
@@ -120,30 +149,34 @@ const Katalog = () => {
                     in 4-6 weeks.
                 </p>
             </div>
-            <button className='bb' style={{ backgroundColor: '#DC8175',borderRadius:'10vh',height:'5vh', cursor: 'pointer' }} onClick={handleButtonClick} sx={{
-                }}>
-                    I want to donate
-                </button>
+            <button className='bb' style={{ backgroundColor: '#DC8175', borderRadius: '10vh', height: '5vh', cursor: 'pointer' }} onClick={handleButtonClick} sx={{
+            }}>
+                I want to donate
+            </button>
 
             <div className='divswithform'>
-                <div className='form'>
+            <button className='form'  onClick={handleButtonClickCollect} sx={{
+                  }}>
+                  I want to collect
+              </button>
+                {/* <div className='form'>
                     {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
                     {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
                     <form onSubmit={submitForm}>
-                        <input placeholder='First Name' type="text" name="firstName" value={formData.firstName} onChange={handleChange} required/>
-                        <input placeholder='Last Name' type="text" name="lastName" value={formData.lastName} onChange={handleChange} required/>
-                        <input placeholder='Phone' type="text" name="phone" value={formData.phone} onChange={handleChange} required/>
-                        <input placeholder='Address' type="text" name="address" value={formData.address} onChange={handleChange} required/>
-                        <input placeholder='Postal Code' type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} required/>
-                        <input placeholder='City' type="text" name="city" value={formData.city} onChange={handleChange} required/>
-                        <input placeholder='Country' type="text" name="country" value={formData.country} onChange={handleChange} required/>
-                        <textarea placeholder='Jewelry Numbers and Quantity' type="text" name="JewelryNumbersAndQuantityOfEachPrize" value={formData.JewelryNumbersAndQuantityOfEachPrize} onChange={handleChange} required/>
+                        <input placeholder='First Name' type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+                        <input placeholder='Last Name' type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+                        <input placeholder='Phone' type="text" name="phone" value={formData.phone} onChange={handleChange} required />
+                        <input placeholder='Address' type="text" name="address" value={formData.address} onChange={handleChange} required />
+                        <input placeholder='Postal Code' type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} required />
+                        <input placeholder='City' type="text" name="city" value={formData.city} onChange={handleChange} required />
+                        <input placeholder='Country' type="text" name="country" value={formData.country} onChange={handleChange} required />
+                        <textarea placeholder='Jewelry Numbers and Quantity' type="text" name="JewelryNumbersAndQuantityOfEachPrize" value={formData.JewelryNumbersAndQuantityOfEachPrize} onChange={handleChange} required /> */}
                         {/* <input type="file" accept="image/*" name="imageBase64" onChange={handleFileChange} /> */}
-                        Upload Receipt
-                            <input type="file" accept="image/*" name="imageBase64" onChange={handleFileChange} />
+                        {/* Upload Receipt
+                        <input type="file" accept="image/*" name="imageBase64" onChange={handleFileChange} />
                         <button type="submit" className='buttton'>Submit</button>
                     </form>
-                </div>
+                </div> */}
                 <div className='p'>
                     <div className='p1'></div>
                     <div className='p2'></div>
